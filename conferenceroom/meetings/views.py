@@ -44,7 +44,7 @@ class MeetingList(generics.ListCreateAPIView):
         if since == None or til == None:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         
-        if since > til:
+        if since >= til:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         for item in Meeting.objects.all():
