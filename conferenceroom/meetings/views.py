@@ -67,7 +67,7 @@ class MeetingDetail(generics.RetrieveUpdateDestroyAPIView):
         if since == None or til == None:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        if data['sinceWhen'] > data['tilWhen']:
+        if since >= til:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         for item in Meeting.objects.all():
